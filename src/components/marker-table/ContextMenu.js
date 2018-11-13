@@ -96,8 +96,7 @@ class MarkersContextMenu extends PureComponent<Props> {
     });
   };
 
-  convertStackToString = () => {
-    const { stack, thread, implementationFilter } = this.props;
+  convertStackToString (stack, thread, implementationFilter) {
     const callNodePath = filterCallNodePathByImplementation(
       thread,
       implementationFilter,
@@ -130,14 +129,14 @@ class MarkersContextMenu extends PureComponent<Props> {
       selectedMarker,
       markers,
     } = this.props;
-    const marker = markers[selectedMarker].data;
-    if (marker.cause) {
+    const marker = markers[selectedMarker];
+    if (marker.data.cause) {
       const stack = this.convertStackToString(
-        marker.cause.stack,
+        marker.data.cause.stack,
         thread,
         implementationFilter
       );
-      copy(stack);
+      copy(marker.data[1]);
     }
   };
 
