@@ -96,7 +96,7 @@ class MarkersContextMenu extends PureComponent<Props> {
     });
   };
 
-  convertStackToString (stack, thread, implementationFilter) {
+  convertStackToString(stack, thread, implementationFilter) {
     const callNodePath = filterCallNodePathByImplementation(
       thread,
       implementationFilter,
@@ -110,7 +110,7 @@ class MarkersContextMenu extends PureComponent<Props> {
     return funcNamesAndOrigins
       .map(({ funcName, origin }) => `${funcName} [${origin}]`)
       .join('\n');
-  };
+  }
 
   copyMarkerJSON = () => {
     const { selectedMarker, markers } = this.props;
@@ -136,7 +136,7 @@ class MarkersContextMenu extends PureComponent<Props> {
         thread,
         implementationFilter
       );
-      copy(marker.data[1]);
+      copy(stack);
     }
   };
 
