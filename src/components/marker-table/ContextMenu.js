@@ -107,7 +107,9 @@ class MarkersContextMenu extends PureComponent<Props> {
       callNodePath,
       thread
     );
-   return funcNamesAndOrigins.map(({ funcName, origin }) => `${funcName} [${origin}]`);
+    return funcNamesAndOrigins.map(
+      ({ funcName, origin }) => `${funcName} [${origin}]`
+    );
   }
 
   copyMarkerJSON = () => {
@@ -121,7 +123,12 @@ class MarkersContextMenu extends PureComponent<Props> {
   };
 
   copyMarkerCause = () => {
-    const { thread, implementationFilter, markers, selectedMarker } = this.props;
+    const {
+      thread,
+      implementationFilter,
+      markers,
+      selectedMarker,
+    } = this.props;
     const marker = markers[selectedMarker].data;
     if (marker.cause) {
       const stack = this.convertStackToString(
