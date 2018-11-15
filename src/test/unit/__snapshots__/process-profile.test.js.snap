@@ -111,7 +111,10 @@ Array [
     "jsFunction1 (http://script.com/one.js:456:1)",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 1,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "http://script.com/one.js",
       "funcName": "jsFunction1",
       "host": "script.com",
@@ -128,7 +131,10 @@ Array [
     "http://script.com/one.js:456:1",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 1,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "http://script.com/one.js",
       "funcName": "(root scope) http://script.com/one.js",
       "host": "script.com",
@@ -145,7 +151,10 @@ Array [
     "moz-extension://bf3bb73c-919c-4fef-95c4-070a19fdaf85/background.js:1:0",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 0,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "moz-extension://bf3bb73c-919c-4fef-95c4-070a19fdaf85/background.js",
       "funcName": "(root scope) moz-extension://bf3bb73c-919c-4fef-95c4-070a19fdaf85/background.js",
       "host": "geckoprofiler@mozilla.com",
@@ -162,7 +171,10 @@ Array [
     "moz-extension://fa2edf9c-c45f-4445-b819-c09e3f2d58d5/content.js:1:0",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 0,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "moz-extension://fa2edf9c-c45f-4445-b819-c09e3f2d58d5/content.js",
       "funcName": "(root scope) moz-extension://fa2edf9c-c45f-4445-b819-c09e3f2d58d5/content.js",
       "host": "geckoprofiler@mozilla.com",
@@ -179,7 +191,10 @@ Array [
     "backgroundFunction (moz-extension://bf3bb73c-919c-4fef-95c4-070a19fdaf85/background.js:2:1)",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 1,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "moz-extension://bf3bb73c-919c-4fef-95c4-070a19fdaf85/background.js",
       "funcName": "backgroundFunction",
       "host": "geckoprofiler@mozilla.com",
@@ -196,7 +211,10 @@ Array [
     "contentfunction (moz-extension://fa2edf9c-c45f-4445-b819-c09e3f2d58d5/content.js:2:1)",
     Object {
       "address": -1,
+<<<<<<< HEAD
       "columnNumber": 1,
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": "moz-extension://fa2edf9c-c45f-4445-b819-c09e3f2d58d5/content.js",
       "funcName": "contentfunction",
       "host": "geckoprofiler@mozilla.com",

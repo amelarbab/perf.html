@@ -22,7 +22,11 @@ import {
 import { UniqueStringArray } from '../utils/unique-string-array';
 import { timeCode } from '../utils/time-code';
 
+<<<<<<< HEAD
 export const CURRENT_VERSION = 18; // The current version of the "processed" profile format.
+=======
+export const CURRENT_VERSION = 16; // The current version of the "processed" profile format.
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
 // Processed profiles before version 1 did not have a profile.meta.preprocessedProfileVersion
 // field. Treat those as version zero.
@@ -784,6 +788,7 @@ const _upgraders = {
       thread.markers.data = newDataArray;
     }
   },
+<<<<<<< HEAD
   [17]: profile => {
     // Profiles now have a relevantForJS property in the funcTable.
     // This column is false on C++ and JS frames, and true on label frames that
@@ -852,5 +857,7 @@ const _upgraders = {
       thread.stringArray = stringTable.serializeToArray();
     }
   },
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 };
 /* eslint-enable no-useless-computed-key */

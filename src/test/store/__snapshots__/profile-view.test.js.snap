@@ -51,7 +51,11 @@ Object {
     "oscpu": "",
     "physicalCPUs": 0,
     "platform": "",
+<<<<<<< HEAD
     "preprocessedProfileVersion": 18,
+=======
+    "preprocessedProfileVersion": 16,
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "processType": 0,
     "product": "Firefox",
     "sourceURL": "",
@@ -154,6 +158,7 @@ Object {
           0,
           0,
         ],
+<<<<<<< HEAD
         "columnNumber": Array [
           null,
           null,
@@ -165,6 +170,8 @@ Object {
           null,
           null,
         ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
         "fileName": Array [
           null,
           null,
@@ -436,7 +443,6 @@ Object {
       },
       "funcTable": Object {
         "address": Array [],
-        "columnNumber": Array [],
         "fileName": Array [],
         "isJS": Array [],
         "length": 0,
@@ -684,6 +690,7 @@ Array [
         0,
         0,
       ],
+<<<<<<< HEAD
       "columnNumber": Array [
         null,
         null,
@@ -695,6 +702,8 @@ Array [
         null,
         null,
       ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
       "fileName": Array [
         null,
         null,
@@ -966,7 +975,6 @@ Array [
     },
     "funcTable": Object {
       "address": Array [],
-      "columnNumber": Array [],
       "fileName": Array [],
       "isJS": Array [],
       "length": 0,
@@ -1331,6 +1339,7 @@ CallTree {
       0,
       0,
     ],
+<<<<<<< HEAD
     "columnNumber": Array [
       null,
       null,
@@ -1342,6 +1351,8 @@ CallTree {
       null,
       null,
     ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "fileName": Array [
       null,
       null,
@@ -1615,6 +1626,7 @@ Object {
       0,
       0,
     ],
+<<<<<<< HEAD
     "columnNumber": Array [
       null,
       null,
@@ -1626,6 +1638,8 @@ Object {
       null,
       null,
     ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "fileName": Array [
       null,
       null,
@@ -2079,6 +2093,7 @@ Object {
       0,
       0,
     ],
+<<<<<<< HEAD
     "columnNumber": Array [
       null,
       null,
@@ -2090,6 +2105,8 @@ Object {
       null,
       null,
     ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "fileName": Array [
       null,
       null,
@@ -2424,6 +2441,7 @@ Object {
       0,
       0,
     ],
+<<<<<<< HEAD
     "columnNumber": Array [
       null,
       null,
@@ -2435,6 +2453,8 @@ Object {
       null,
       null,
     ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "fileName": Array [
       null,
       null,
@@ -2737,6 +2757,7 @@ Object {
       0,
       0,
     ],
+<<<<<<< HEAD
     "columnNumber": Array [
       null,
       null,
@@ -2748,6 +2769,8 @@ Object {
       null,
       null,
     ],
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
     "fileName": Array [
       null,
       null,

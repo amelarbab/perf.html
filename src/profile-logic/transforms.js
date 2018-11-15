@@ -773,7 +773,6 @@ export function collapseResource(
     relevantForJS: funcTable.relevantForJS.slice(),
     fileName: funcTable.fileName.slice(),
     lineNumber: funcTable.lineNumber.slice(),
-    columnNumber: funcTable.columnNumber.slice(),
     length: funcTable.length,
   };
   const newStackTable: StackTable = {

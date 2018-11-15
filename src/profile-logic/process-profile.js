@@ -158,7 +158,6 @@ export function extractFuncsAndResourcesFromFrameLocations(
     isJS: [],
     fileName: [],
     lineNumber: [],
-    columnNumber: [],
   };
 
   // Explicitly create ResourceTable. If Flow complains about this, then all of
@@ -287,7 +286,6 @@ function _extractUnsymbolicatedFunction(
   funcTable.isJS[funcIndex] = false;
   funcTable.fileName[funcIndex] = null;
   funcTable.lineNumber[funcIndex] = null;
-  funcTable.columnNumber[funcIndex] = null;
   return funcIndex;
 }
 
@@ -351,7 +349,6 @@ function _extractCppFunction(
   funcTable.isJS[newFuncIndex] = false;
   funcTable.fileName[newFuncIndex] = null;
   funcTable.lineNumber[newFuncIndex] = null;
-  funcTable.columnNumber[newFuncIndex] = null;
 
   return newFuncIndex;
 }
@@ -394,12 +391,21 @@ function _extractJsFunction(
 ): IndexIntoFuncTable | null {
   // Check for a JS location string.
   const jsMatch: RegExpResult =
+<<<<<<< HEAD
     // Given:   "functionName (http://script.url/:1234:1234)"
     // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
     /^(.*) \((.+?):([0-9]+)(?::([0-9]+))?\)$/.exec(locationString) ||
     // Given:   "http://script.url/:1234:1234"
     // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
     /^()(.+?):([0-9]+)(?::([0-9]+))?$/.exec(locationString);
+=======
+    // Given:   "functionName (http://script.url/:1234)"
+    // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^
+    /^(.*) \((.*):([0-9]+)\)$/.exec(locationString) ||
+    // Given:   "http://script.url/:1234"
+    // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^
+    /^()(.*):([0-9]+)$/.exec(locationString);
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
   if (!jsMatch) {
     return null;
@@ -471,7 +477,10 @@ function _extractJsFunction(
   }
   const fileName = stringTable.indexForString(scriptURI);
   const lineNumber = parseInt(jsMatch[3], 10);
+<<<<<<< HEAD
   const columnNumber = jsMatch[4] ? parseInt(jsMatch[4], 10) : null;
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
   // Add the function to the funcTable.
   const funcIndex = funcTable.length++;
@@ -482,7 +491,10 @@ function _extractJsFunction(
   funcTable.isJS[funcIndex] = true;
   funcTable.fileName[funcIndex] = fileName;
   funcTable.lineNumber[funcIndex] = lineNumber;
+<<<<<<< HEAD
   funcTable.columnNumber[funcIndex] = columnNumber;
+=======
+>>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
   return funcIndex;
 }
@@ -503,7 +515,6 @@ function _extractUnknownFunctionType(
   funcTable.isJS[index] = false;
   funcTable.fileName[index] = null;
   funcTable.lineNumber[index] = null;
-  funcTable.columnNumber[index] = null;
   return index;
 }
 
