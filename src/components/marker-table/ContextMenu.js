@@ -129,14 +129,14 @@ class MarkersContextMenu extends PureComponent<Props> {
       markers,
       selectedMarker,
     } = this.props;
-    const marker = markers[selectedMarker].data;
+    const marker = markers[selectedMarker];
     if (marker.cause) {
       const stack = this.convertStackToString(
         marker.cause.stack,
         thread,
         implementationFilter
       );
-      copy(stack);
+      copy(marker.stack);
     }
   };
 
