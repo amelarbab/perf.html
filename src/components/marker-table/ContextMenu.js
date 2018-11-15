@@ -136,7 +136,7 @@ class MarkersContextMenu extends PureComponent<Props> {
         thread,
         implementationFilter
       );
-      copy(marker.stack);
+      copy(stack);
     }
   };
 
