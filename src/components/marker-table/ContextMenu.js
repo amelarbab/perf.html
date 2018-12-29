@@ -28,13 +28,12 @@ import type {
   ConnectedProps,
 } from '../../utils/connect';
 import { getImplementationFilter } from '../../reducers/url-state';
-import type { Thread } from '../../types/profile';
+import type { Thread, IndexIntoStackTable } from '../../types/profile';
 import { filterCallNodePathByImplementation } from '../../profile-logic/transforms';
 import {
   convertStackToCallNodePath,
   getFuncNamesAndOriginsForPath,
 } from '../../profile-logic/profile-data';
-import type { IndexIntoStackTable, IndexIntoStringTable } from './profile';
 
 type StateProps = {|
   +markers: TracingMarker[],
@@ -97,11 +96,8 @@ class MarkersContextMenu extends PureComponent<Props> {
     });
   };
 
-   convertStackToString (stack: IndexIntoStackTable): string {
-    const {
-      thread,
-      implementationFilter,
-    } = this.props;
+  convertStackToString(stack: IndexIntoStackTable): string {
+    const { thread, implementationFilter } = this.props;
 
     const callNodePath = filterCallNodePathByImplementation(
       thread,
@@ -116,7 +112,7 @@ class MarkersContextMenu extends PureComponent<Props> {
     return funcNamesAndOrigins.map(
       ({ funcName, origin }) => `${funcName} [${origin}]`
     );
-  };
+  }
 
   copyMarkerJSON = () => {
     const { selectedMarker, markers } = this.props;
@@ -129,14 +125,10 @@ class MarkersContextMenu extends PureComponent<Props> {
   };
 
   copyMarkerCause = () => {
-    const {
-      markers,
-      selectedMarker,
-    } = this.props;
+    const { markers, selectedMarker } = this.props;
     const marker = markers[selectedMarker];
     if (marker && marker.data && marker.data.cause) {
-      const stack = this.convertStackToString(
-          marker.data.cause.stack);
+      const stack = this.convertStackToString(marker.data.cause.stack);
       copy(stack);
     }
   };

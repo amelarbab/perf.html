@@ -394,18 +394,18 @@ function _extractJsFunction(
 ): IndexIntoFuncTable | null {
   // Check for a JS location string.
   const jsMatch: RegExpResult =
-  // Given:   "functionName (http://script.url/:1234:1234)"
-  // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
-  /^(.*) \((.+?):([0-9]+)(?::([0-9]+))?\)$/.exec(locationString) ||
-  // Given:   "http://script.url/:1234:1234"
-  // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
-  /^()(.+?):([0-9]+)(?::([0-9]+))?$/.exec(locationString);
+    // Given:   "functionName (http://script.url/:1234:1234)"
+    // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
+    /^(.*) \((.+?):([0-9]+)(?::([0-9]+))?\)$/.exec(locationString) ||
+    // Given:   "http://script.url/:1234:1234"
+    // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
+    /^()(.+?):([0-9]+)(?::([0-9]+))?$/.exec(locationString);
 
-if (!jsMatch) {
-  return null;
-}
+  if (!jsMatch) {
+    return null;
+  }
 
-const {
+  const {
     funcTable,
     stringTable,
     resourceTable,
@@ -473,7 +473,7 @@ const {
   const lineNumber = parseInt(jsMatch[3], 10);
   const columnNumber = jsMatch[4] ? parseInt(jsMatch[4], 10) : null;
 
-// Add the function to the funcTable.
+  // Add the function to the funcTable.
   const funcIndex = funcTable.length++;
   funcTable.name[funcIndex] = funcNameIndex;
   funcTable.resource[funcIndex] = resourceIndex;
@@ -484,7 +484,7 @@ const {
   funcTable.lineNumber[funcIndex] = lineNumber;
   funcTable.columnNumber[funcIndex] = columnNumber;
 
-return funcIndex;
+  return funcIndex;
 }
 
 /**

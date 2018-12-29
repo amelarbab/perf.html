@@ -51,15 +51,7 @@ Object {
     "oscpu": "",
     "physicalCPUs": 0,
     "platform": "",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "preprocessedProfileVersion": 18,
-=======
-    "preprocessedProfileVersion": 16,
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
-    "preprocessedProfileVersion": 18,
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "processType": 0,
     "product": "Firefox",
     "sourceURL": "",
@@ -163,10 +155,6 @@ Object {
           0,
           0,
         ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
         "columnNumber": Array [
           null,
           null,
@@ -178,11 +166,6 @@ Object {
           null,
           null,
         ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
         "fileName": Array [
           null,
           null,
@@ -702,10 +685,6 @@ Array [
         0,
         0,
       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
       "columnNumber": Array [
         null,
         null,
@@ -717,11 +696,6 @@ Array [
         null,
         null,
       ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
       "fileName": Array [
         null,
         null,
@@ -1358,10 +1332,6 @@ CallTree {
       0,
       0,
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "columnNumber": Array [
       null,
       null,
@@ -1373,11 +1343,6 @@ CallTree {
       null,
       null,
     ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "fileName": Array [
       null,
       null,
@@ -1651,10 +1616,6 @@ Object {
       0,
       0,
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "columnNumber": Array [
       null,
       null,
@@ -1666,11 +1627,6 @@ Object {
       null,
       null,
     ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "fileName": Array [
       null,
       null,
@@ -2124,10 +2080,6 @@ Object {
       0,
       0,
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "columnNumber": Array [
       null,
       null,
@@ -2139,11 +2091,6 @@ Object {
       null,
       null,
     ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "fileName": Array [
       null,
       null,
@@ -2478,10 +2425,6 @@ Object {
       0,
       0,
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "columnNumber": Array [
       null,
       null,
@@ -2493,11 +2436,6 @@ Object {
       null,
       null,
     ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "fileName": Array [
       null,
       null,
@@ -2800,10 +2738,6 @@ Object {
       0,
       0,
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "columnNumber": Array [
       null,
       null,
@@ -2815,11 +2749,6 @@ Object {
       null,
       null,
     ],
-<<<<<<< HEAD
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
-=======
->>>>>>> ce2b8e57a8937ae84fdfb345b2c280fb6aeb91c7
     "fileName": Array [
       null,
       null,
