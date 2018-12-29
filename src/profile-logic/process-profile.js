@@ -158,6 +158,7 @@ export function extractFuncsAndResourcesFromFrameLocations(
     isJS: [],
     fileName: [],
     lineNumber: [],
+    columnNumber: [],
   };
 
   // Explicitly create ResourceTable. If Flow complains about this, then all of
@@ -286,6 +287,7 @@ function _extractUnsymbolicatedFunction(
   funcTable.isJS[funcIndex] = false;
   funcTable.fileName[funcIndex] = null;
   funcTable.lineNumber[funcIndex] = null;
+  funcTable.columnNumber[funcIndex] = null;
   return funcIndex;
 }
 
@@ -349,6 +351,7 @@ function _extractCppFunction(
   funcTable.isJS[newFuncIndex] = false;
   funcTable.fileName[newFuncIndex] = null;
   funcTable.lineNumber[newFuncIndex] = null;
+  funcTable.columnNumber[newFuncIndex] = null;
 
   return newFuncIndex;
 }
@@ -391,27 +394,18 @@ function _extractJsFunction(
 ): IndexIntoFuncTable | null {
   // Check for a JS location string.
   const jsMatch: RegExpResult =
-<<<<<<< HEAD
-    // Given:   "functionName (http://script.url/:1234:1234)"
-    // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
-    /^(.*) \((.+?):([0-9]+)(?::([0-9]+))?\)$/.exec(locationString) ||
-    // Given:   "http://script.url/:1234:1234"
-    // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
-    /^()(.+?):([0-9]+)(?::([0-9]+))?$/.exec(locationString);
-=======
-    // Given:   "functionName (http://script.url/:1234)"
-    // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^
-    /^(.*) \((.*):([0-9]+)\)$/.exec(locationString) ||
-    // Given:   "http://script.url/:1234"
-    // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^
-    /^()(.*):([0-9]+)$/.exec(locationString);
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
+  // Given:   "functionName (http://script.url/:1234:1234)"
+  // Captures: 1^^^^^^^^^^  2^^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
+  /^(.*) \((.+?):([0-9]+)(?::([0-9]+))?\)$/.exec(locationString) ||
+  // Given:   "http://script.url/:1234:1234"
+  // Captures: 2^^^^^^^^^^^^^^^^^ 3^^^ 4^^^
+  /^()(.+?):([0-9]+)(?::([0-9]+))?$/.exec(locationString);
 
-  if (!jsMatch) {
-    return null;
-  }
+if (!jsMatch) {
+  return null;
+}
 
-  const {
+const {
     funcTable,
     stringTable,
     resourceTable,
@@ -477,12 +471,9 @@ function _extractJsFunction(
   }
   const fileName = stringTable.indexForString(scriptURI);
   const lineNumber = parseInt(jsMatch[3], 10);
-<<<<<<< HEAD
   const columnNumber = jsMatch[4] ? parseInt(jsMatch[4], 10) : null;
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
-  // Add the function to the funcTable.
+// Add the function to the funcTable.
   const funcIndex = funcTable.length++;
   funcTable.name[funcIndex] = funcNameIndex;
   funcTable.resource[funcIndex] = resourceIndex;
@@ -491,12 +482,9 @@ function _extractJsFunction(
   funcTable.isJS[funcIndex] = true;
   funcTable.fileName[funcIndex] = fileName;
   funcTable.lineNumber[funcIndex] = lineNumber;
-<<<<<<< HEAD
   funcTable.columnNumber[funcIndex] = columnNumber;
-=======
->>>>>>> parent of c3580ab... Remove line number from URL Fix #1397
 
-  return funcIndex;
+return funcIndex;
 }
 
 /**
@@ -515,6 +503,7 @@ function _extractUnknownFunctionType(
   funcTable.isJS[index] = false;
   funcTable.fileName[index] = null;
   funcTable.lineNumber[index] = null;
+  funcTable.columnNumber[index] = null;
   return index;
 }
 
@@ -611,10 +600,11 @@ function _processMarkers(geckoMarkers: GeckoMarkerStruct): MarkersTable {
            */
           case 'GCSlice': {
             const mt: GCSliceData_Gecko = m.timings;
-            const timings = Object.assign({}, mt, {
-              phase_times: mt.times ? convertPhaseTimes(mt.times) : {},
-            });
-            delete timings.times;
+            const { times, ...partialMt } = mt;
+            const timings = {
+              ...partialMt,
+              phase_times: times ? convertPhaseTimes(times) : {},
+            };
             return {
               type: 'GCSlice',
               startTime: m.startTime,
@@ -626,11 +616,13 @@ function _processMarkers(geckoMarkers: GeckoMarkerStruct): MarkersTable {
             const mt: GCMajorAborted | GCMajorCompleted_Gecko = m.timings;
             switch (mt.status) {
               case 'completed': {
-                const timings: GCMajorCompleted = Object.assign({}, mt, {
-                  phase_times: convertPhaseTimes(mt.totals),
+                const { totals, ...partialMt } = mt;
+                const timings: GCMajorCompleted = {
+                  ...partialMt,
+                  phase_times: convertPhaseTimes(totals),
                   mmu_20ms: mt.mmu_20ms / 100,
                   mmu_50ms: mt.mmu_50ms / 100,
-                });
+                };
                 return {
                   type: 'GCMajor',
                   startTime: m.startTime,
@@ -656,9 +648,11 @@ function _processMarkers(geckoMarkers: GeckoMarkerStruct): MarkersTable {
            * profiles from older gecko will be of type "tracing".
            */
           case 'Styles': {
-            const newData = Object.assign({}, m);
+            const newData = { ...m };
             _convertStackToCause(newData);
-            const result: StyleMarkerPayload = newData;
+            // We had to use any here because _convertStackToCause is not
+            // providing the type system with information how it's operating
+            const result: StyleMarkerPayload = (newData: any);
             return result;
           }
           case 'tracing': {
@@ -876,6 +870,12 @@ export function processProfile(
     );
   }
 
+  let pages = [...(geckoProfile.pages || [])];
+
+  for (const subprocessProfile of geckoProfile.processes) {
+    pages = pages.concat(subprocessProfile.pages || []);
+  }
+
   const meta = {
     interval: geckoProfile.meta.interval,
     startTime: geckoProfile.meta.startTime,
@@ -902,6 +902,7 @@ export function processProfile(
 
   const result = {
     meta,
+    pages,
     threads,
   };
   return result;
@@ -916,8 +917,17 @@ export function serializeProfile(
   includeNetworkUrls: boolean = true
 ): string {
   // stringTable -> stringArray
+  let urlCounter = 0;
   const newProfile = Object.assign({}, profile, {
     meta: { ...profile.meta, networkURLsRemoved: !includeNetworkUrls },
+    pages:
+      includeNetworkUrls === false && profile.pages
+        ? profile.pages.map(page =>
+            Object.assign({}, page, {
+              url: 'Page #' + urlCounter++,
+            })
+          )
+        : profile.pages,
     threads: profile.threads.map(thread => {
       const stringArray = thread.stringTable.serializeToArray();
       const newThread = Object.assign({}, thread);

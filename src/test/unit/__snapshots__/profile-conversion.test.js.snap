@@ -60,6 +60,7 @@ Object {
     "toolkit": "",
     "version": 14,
   },
+  "pages": Array [],
   "threads": Array [
     Object {
       "frameTable": Object {
@@ -289,7 +290,33 @@ Object {
           0,
           0,
         ],
-        "columnNumber": Array [],
+        "columnNumber": Array [
+          null,
+          1757,
+          null,
+          null,
+          1363,
+          1783,
+          3420,
+          463,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          4543,
+          1326,
+          null,
+          29,
+          null,
+          5197,
+          5375,
+          296,
+          null,
+        ],
         "fileName": Array [
           null,
           3,
@@ -5621,6 +5648,7 @@ Object {
     "toolkit": undefined,
     "version": 14,
   },
+  "pages": Array [],
   "threads": Array [
     Object {
       "frameTable": Object {

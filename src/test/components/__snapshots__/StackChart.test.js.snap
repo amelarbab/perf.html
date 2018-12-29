@@ -97,7 +97,7 @@ exports[`StackChart matches the snapshot 1`] = `
           <input
             className="idleSearchFieldButton"
             onClick={[Function]}
-            onFocus={[Function]}
+            tabIndex={-1}
             type="reset"
           />
         </form>
@@ -114,8 +114,11 @@ exports[`StackChart matches the snapshot 1`] = `
   >
     <div
       className="chartViewport"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onWheel={[Function]}
+      tabIndex={0}
     >
       <div>
         <canvas

@@ -34,6 +34,7 @@ import {
   convertStackToCallNodePath,
   getFuncNamesAndOriginsForPath,
 } from '../../profile-logic/profile-data';
+import type { IndexIntoStackTable, IndexIntoStringTable } from './profile';
 
 type StateProps = {|
   +markers: TracingMarker[],
@@ -96,7 +97,12 @@ class MarkersContextMenu extends PureComponent<Props> {
     });
   };
 
-  convertStackToString(stack, thread, implementationFilter) {
+   convertStackToString (stack: IndexIntoStackTable): string {
+    const {
+      thread,
+      implementationFilter,
+    } = this.props;
+
     const callNodePath = filterCallNodePathByImplementation(
       thread,
       implementationFilter,
@@ -110,7 +116,7 @@ class MarkersContextMenu extends PureComponent<Props> {
     return funcNamesAndOrigins.map(
       ({ funcName, origin }) => `${funcName} [${origin}]`
     );
-  }
+  };
 
   copyMarkerJSON = () => {
     const { selectedMarker, markers } = this.props;
@@ -124,18 +130,13 @@ class MarkersContextMenu extends PureComponent<Props> {
 
   copyMarkerCause = () => {
     const {
-      thread,
-      implementationFilter,
       markers,
       selectedMarker,
     } = this.props;
     const marker = markers[selectedMarker];
-    if (marker.cause) {
+    if (marker && marker.data && marker.data.cause) {
       const stack = this.convertStackToString(
-        marker.cause.stack,
-        thread,
-        implementationFilter
-      );
+          marker.data.cause.stack);
       copy(stack);
     }
   };
@@ -162,10 +163,9 @@ const options: ExplicitConnectOptions<{||}, StateProps, DispatchProps> = {
     markers: selectedThreadSelectors.getPreviewFilteredTracingMarkers(state),
     previewSelection: getPreviewSelection(state),
     committedRange: getCommittedRange(state),
-    selectedMarker: selectedThreadSelectors.getViewOptions(state)
-      .selectedMarker,
     thread: selectedThreadSelectors.getThread(state),
     implementationFilter: getImplementationFilter(state),
+    selectedMarker: selectedThreadSelectors.getSelectedMarkerIndex(state),
   }),
   mapDispatchToProps: { updatePreviewSelection },
   component: MarkersContextMenu,

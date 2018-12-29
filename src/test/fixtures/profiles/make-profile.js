@@ -150,6 +150,7 @@ export function getEmptyThread(overrides: ?Object): Thread {
         resource: [],
         fileName: [],
         lineNumber: [],
+        columnNumber: [],
         length: 0,
       },
       resourceTable: {
